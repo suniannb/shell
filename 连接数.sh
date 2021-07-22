@@ -5,7 +5,7 @@ netstat -na|grep 80|awk '{print $5}'|awk -F: '{print $1}' >A;
 sort A | sort -u A > B ;
 #查询前过滤
 sed -i "s/STREAM//g" B;
-sed -i "s/`curl ifconfig.me`//g" B;
+sed -i "s/`curl -s ifconfig.me`//g" B;
 #计数变量
 JS=`sed -n '$=' B`;
 echo "当前连 接ip数为$((JS-2)) 个";
